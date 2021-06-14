@@ -22,8 +22,16 @@ def get_permutations(sequence):
     Note: depending on your implementation, you may return the permutations in
     a different order than what is listed here.
     '''
-
-    pass #delete this line and replace with your code here
+    if len(sequence)<2:
+        return sequence
+    else:
+        shift=sequence[0]
+        remainder=get_permutations(sequence[1:])
+        permutations=[]
+        for word in remainder:
+            for letter in range(len(word)+1):
+                permutations.append(word[:letter]+shift+word[letter:])
+        return permutations
 
 if __name__ == '__main__':
 #    #EXAMPLE
@@ -35,6 +43,16 @@ if __name__ == '__main__':
 #    # Put three example test cases here (for your sanity, limit your inputs
 #    to be three characters or fewer as you will have n! permutations for a 
 #    sequence of length n)
-
-    pass #delete this line and replace with your code here
+    input="bad"
+    print("Input",input)
+    print("Expected Output:",["bad","abd","adb","dab","dba","bda"])
+    print("Actual Output:",get_permutations(input))
+    input="ham"
+    print("Input",input)
+    print("Expected Output:",["ham","ahm","amh","mah","mha","hma"])
+    print("Actual Output:",get_permutations(input))
+    input="bot"
+    print("Input",input)
+    print("Expected Output:",['bot', 'obt', 'otb', 'bto', 'tbo', 'tob'])
+    print("Actual Output:",get_permutations(input))
 
