@@ -241,7 +241,7 @@ class CiphertextMessage(Message):
             test_string=self.apply_shift(shifted_value)
             test_list=test_string.split(" ")
             for word in test_list:
-                if is_word(self.valid_words,word)==True:
+                if is_word(self.get_valid_words(),word)==True:
                     good_words+=1
             shiftMess=(shifted_value)
             word_score[shiftMess]=good_words
